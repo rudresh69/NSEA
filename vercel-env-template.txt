@@ -1,0 +1,71 @@
+# ============================================
+# Vercel Environment Variables Template
+# ============================================
+# Copy these variables to Vercel Dashboard:
+# Settings → Environment Variables
+# Or use: vercel env add VARIABLE_NAME
+# ============================================
+
+# ============================================
+# REQUIRED: Database Configuration
+# ============================================
+# Get from: Supabase Dashboard → Settings → Database → Connection string
+# Use the "Connection pooling" URL (port 6543)
+DATABASE_URL=postgresql://postgres.[PROJECT-REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres
+SUPABASE_DATABASE_URL=postgresql://postgres.[PROJECT-REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres
+
+# ============================================
+# REQUIRED: Supabase Configuration
+# ============================================
+# Get from: Supabase Dashboard → Settings → API
+SUPABASE_URL=https://nblegrzglewrpwqogkgr.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ibGVncnpnbGV3cnB3cW9na2dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NzM2NDMsImV4cCI6MjA3ODU0OTY0M30.uxsb-MFcLeRL4T1Cpe0ji-X5o660RLkfhVfRrrsa5YY
+# ⚠️ REQUIRED: Get service_role key from Supabase Dashboard → Settings → API
+# ⚠️ KEEP SECRET - This has admin access to your database!
+SUPABASE_SERVICE_ROLE_KEY=REPLACE_WITH_YOUR_SERVICE_ROLE_KEY
+
+# ============================================
+# REQUIRED: Authentication Configuration
+# ============================================
+# Generate a strong secret: openssl rand -base64 32
+# Or use: node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+JWT_SECRET=REPLACE_WITH_RANDOM_SECRET_KEY
+ADMIN_EMAIL=admin@yourdomain.com
+ADMIN_PASSWORD=REPLACE_WITH_SECURE_PASSWORD
+
+# ============================================
+# REQUIRED: Runtime Configuration
+# ============================================
+NODE_ENV=production
+
+# ============================================
+# OPTIONAL: Forge API (only if using Forge services)
+# ============================================
+# FORGE_API_URL=
+# FORGE_API_KEY=
+
+# ============================================
+# OPTIONAL: OAuth (only if using OAuth authentication)
+# ============================================
+# OAUTH_SERVER_URL=
+# APP_ID=
+
+# ============================================
+# INSTRUCTIONS:
+# ============================================
+# 1. Replace all [PLACEHOLDER] values with your actual values
+# 2. Go to Vercel Dashboard → Your Project → Settings → Environment Variables
+# 3. Add each variable one by one, or use Vercel CLI:
+#
+#    vercel env add DATABASE_URL production
+#    vercel env add SUPABASE_URL production
+#    vercel env add SUPABASE_ANON_KEY production
+#    vercel env add SUPABASE_SERVICE_ROLE_KEY production
+#    vercel env add JWT_SECRET production
+#    vercel env add ADMIN_EMAIL production
+#    vercel env add ADMIN_PASSWORD production
+#    vercel env add NODE_ENV production
+#
+# 4. After adding all variables, redeploy: vercel --prod
+# ============================================
+
