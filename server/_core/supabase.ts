@@ -1,8 +1,8 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { ENV } from "./env";
 
 // Server-side Supabase client with service role key (for admin operations)
-export const supabaseAdmin = createClient(
+export const supabaseAdmin: SupabaseClient<any> = createClient(
   ENV.supabaseUrl,
   ENV.supabaseServiceRoleKey || ENV.supabaseAnonKey,
   {
@@ -14,7 +14,7 @@ export const supabaseAdmin = createClient(
 );
 
 // Client-side Supabase client (for user operations)
-export function createSupabaseClient(accessToken?: string) {
+export function createSupabaseClient(accessToken?: string): SupabaseClient<any> {
   const client = createClient(ENV.supabaseUrl, ENV.supabaseAnonKey, {
     auth: {
       autoRefreshToken: true,

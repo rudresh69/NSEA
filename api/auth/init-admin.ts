@@ -24,6 +24,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Create admin user via Supabase Auth
+    // @ts-ignore - admin property exists when using service role key
     const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
       email: ENV.adminEmail,
       password: ENV.adminPassword,

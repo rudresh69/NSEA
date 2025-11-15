@@ -10,7 +10,8 @@ dist
 *.md
 !README.md
 !VERCEL_DEPLOYMENT.md
-drizzle
+drizzle/migrations
+drizzle/meta
 *.sql
 *.bak
 vitest.config.ts
