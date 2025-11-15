@@ -4,12 +4,14 @@ import { supabaseAuth } from "./supabaseAuth";
 
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];
-  res: CreateExpressContextOptions["res"];
+  res: CreateExpressContextOptions["res"] & {
+    clearCookie: (name: string, options?: any) => void;
+  };
   user: User | null;
 };
 
 export async function createContext(
-  opts: CreateExpressContextOptions
+  opts: CreateExpressContextOptions | { req: any; res: any; info?: any }
 ): Promise<TrpcContext> {
   let user: User | null = null;
 

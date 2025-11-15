@@ -89,7 +89,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         setHeader: (name: string, value: string) => res.setHeader(name, value),
       } as any;
 
-      return createContext({ req: expressReq, res: expressRes });
+      return createContext({ req: expressReq, res: expressRes, info: opts.info || undefined });
     },
   });
 
