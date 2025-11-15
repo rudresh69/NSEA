@@ -126,7 +126,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { email, password } = req.body;
+    // Vercel Node functions may provide body as a string or an already-parsed object.
+    const rawBody = req.body as any;
+    let body: any;
+
+    if (typeof rawBody === "string") {
+      try {
+        body = rawBody ? JSON.parse(rawBody) : {};
+      } catch (parseError) {
+        console.error("[Auth] Failed to parse JSON body in /api/auth/login", parseError);
+        return res.status(400).json({ error: "Invalid JSON body" });
+      }
+    } else {
+      body = rawBody || {};
+    }
+
+    const { email, password } = body as { email?: string; password?: string };
 
     if (!email || !password) {
       return res.status(400).json({ error: "Email and password are required" });
